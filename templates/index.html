@@ -315,20 +315,45 @@
 </div>
 
 
-    <!-- My Forecasts -->
+      <!-- My Forecasts -->
     <section id="my-forecasts" class="section">
       <div class="section-header">
         <h1 class="section-title">My Forecasts</h1>
         <p class="section-subtitle">Track your predictions and performance.</p>
       </div>
-
-      <div class="empty-state">
-        <div class="empty-icon">📊</div>
-        <h2 class="empty-title">No forecasts yet</h2>
-        <p class="empty-text">Start making predictions to climb the leaderboard!</p>
-        <button class="cta-btn">Create Your First Forecast</button>
+    
+      <div class="prediction-card">
+        <div class="prediction-icon">📊</div>
+        <h2 class="prediction-title">You haven’t made any predictions yet</h2>
+        <p class="prediction-text">Start building your forecasting reputation!</p>
+        <button id="openPredictionModal" class="cta-btn">Create Your First Prediction</button>
       </div>
     </section>
+    
+    <!-- Prediction Modal -->
+    <div id="predictionModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Create Prediction</h2>
+          <button id="closePredictionModal" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label for="eventSelect">Choose an active event:</label>
+          <select id="eventSelect">
+            <option value="">-- Select an event --</option>
+            <option>Will AI reach AGI by 2027?</option>
+            <option>Bitcoin above $100K by end of 2025?</option>
+            <option>Global climate agreement in 2025?</option>
+            <option>Team X wins championship 2025?</option>
+          </select>
+    
+          <div class="prediction-buttons">
+            <button class="prediction-btn" id="yesBtn">Yes 👍</button>
+            <button class="prediction-btn" id="noBtn">No 👎</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
