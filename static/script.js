@@ -21,9 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Charts + modal
+  // Charts + modal + MetaMask
   initializeCharts()
   setupModal()
+  setupMetamask()
 })
 
 // Chart initialization
@@ -163,3 +164,39 @@ function setupModal() {
     })
   }
 }
+
+// MetaMask connect setup
+function setupMetamask() {
+  const btn = document.getElementById("connectMetamaskBtn")
+  if (!btn) return
+
+  btn.addEventListener("click", async () => {
+    // No MetaMask (or other provider) found
+    if (typeof window.ethereum === "undefined") {
+      alert("MetaMask not detected. Please install MetaMask and try again.")
+      window.open("https://metamask.io/download/", "_blank")
+      return
+    }
+
+    try {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      })
+
+      const account = accounts && accounts[0]
+      console.log("Connected MetaMask account:", account)
+
+      btn.textContent = "Connected"
+      btn.classList.add("connected")
+    } catch (err) {
+      console.error("MetaMask connection error:", err)
+      if (err && err.code === 4001) {
+        // User rejected request
+        alert("Connection request was rejected.")
+      } else {
+        alert("Failed to connect to MetaMask. Check the console for details.")
+      }
+    }
+  })
+}
+
