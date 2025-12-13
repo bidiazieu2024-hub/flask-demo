@@ -220,4 +220,3 @@ function initCharts() {
 document.addEventListener("DOMContentLoaded", () => {
   initCharts()
 })
-
