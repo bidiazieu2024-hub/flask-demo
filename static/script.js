@@ -1,7 +1,5 @@
-import { Chart } from "@/components/ui/chart"
-// Navigation
+// Navigation + app init
 document.addEventListener("DOMContentLoaded", () => {
-  // Get all nav links and sections
   const navLinks = document.querySelectorAll(".nav-link")
   const sections = document.querySelectorAll(".section")
 
@@ -10,14 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       e.preventDefault()
 
-      // Remove active class from all links and sections
       navLinks.forEach((l) => l.classList.remove("active"))
       sections.forEach((s) => s.classList.remove("active"))
 
-      // Add active class to clicked link
       link.classList.add("active")
 
-      // Show corresponding section
       const sectionId = link.getAttribute("data-section")
       const targetSection = document.getElementById(sectionId)
       if (targetSection) {
@@ -26,10 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Initialize Charts
+  // Charts + modal
   initializeCharts()
-
-  // Modal functionality
   setupModal()
 })
 
@@ -44,62 +37,68 @@ function initializeCharts() {
 
   chartData.forEach((data) => {
     const ctx = document.getElementById(data.id)
-    if (ctx) {
-      new Chart(ctx, {
-        type: "doughnut",
-        data: {
-          labels: ["YES", "NO"],
-          datasets: [
-            {
-              data: [data.yes, data.no],
-              backgroundColor: ["#ff00ff", "#00fff0"],
-              borderWidth: 0,
-              borderRadius: 4,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          cutout: "70%",
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              enabled: true,
-              backgroundColor: "rgba(13, 13, 21, 0.95)",
-              titleColor: "#ffffff",
-              bodyColor: "#ffffff",
-              borderColor: "#ff00ff",
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                label: (context) => context.label + ": " + context.parsed + "%",
-              },
+    if (!ctx) return
+
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["YES", "NO"],
+        datasets: [
+          {
+            data: [data.yes, data.no],
+            backgroundColor: ["#ff00ff", "#00fff0"],
+            borderWidth: 0,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        cutout: "70%",
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: "rgba(13, 13, 21, 0.95)",
+            titleColor: "#ffffff",
+            bodyColor: "#ffffff",
+            borderColor: "#ff00ff",
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
+            callbacks: {
+              label: (context) => context.label + ": " + context.parsed + "%",
             },
           },
         },
-      })
-    }
+      },
+    })
   })
 }
 
 // Modal setup
 function setupModal() {
   const modal = document.getElementById("newForecastModal")
+  if (!modal) return
+
   const openButtons = document.querySelectorAll(".create-forecast-btn, .cta-btn")
-  const closeButton = document.querySelector(".modal-close")
-  const cancelButton = document.querySelector(".cancel-btn")
-  const overlay = document.querySelector(".modal-overlay")
-  const submitButton = document.querySelector(".submit-forecast-btn")
+  const closeButton = modal.querySelector(".modal-close")
+  const cancelButton = modal.querySelector(".cancel-btn")
+  const overlay = modal.querySelector(".modal-overlay")
+  const submitButton = modal.querySelector(".submit-forecast-btn")
   const form = document.getElementById("forecastForm")
 
-  // Toggle buttons for YES/NO
-  const toggleButtons = document.querySelectorAll(".toggle-btn")
+  const toggleButtons = modal.querySelectorAll(".toggle-btn")
+  const slider = document.getElementById("confidenceSlider")
+  const confidenceValue = document.getElementById("confidenceValue")
+  const eventSelect = document.getElementById("eventSelect")
+
   let selectedChoice = null
 
+  // Toggle YES/NO
   toggleButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       toggleButtons.forEach((b) => b.classList.remove("active"))
@@ -109,61 +108,58 @@ function setupModal() {
   })
 
   // Confidence slider
-  const slider = document.getElementById("confidenceSlider")
-  const confidenceValue = document.getElementById("confidenceValue")
-
-  slider.addEventListener("input", (e) => {
-    confidenceValue.textContent = e.target.value
-  })
+  if (slider && confidenceValue) {
+    slider.addEventListener("input", (e) => {
+      confidenceValue.textContent = e.target.value
+    })
+  }
 
   // Open modal
   openButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       modal.classList.add("active")
-      // Reset form
-      form.reset()
+      if (form) form.reset()
       toggleButtons.forEach((b) => b.classList.remove("active"))
       selectedChoice = null
-      confidenceValue.textContent = "50"
+      if (confidenceValue) confidenceValue.textContent = "50"
+      if (slider) slider.value = 50
     })
   })
 
-  // Close modal functions
+  // Close helpers
   const closeModal = () => {
     modal.classList.remove("active")
   }
 
-  closeButton.addEventListener("click", closeModal)
-  cancelButton.addEventListener("click", closeModal)
-  overlay.addEventListener("click", closeModal)
+  if (closeButton) closeButton.addEventListener("click", closeModal)
+  if (cancelButton) cancelButton.addEventListener("click", closeModal)
+  if (overlay) overlay.addEventListener("click", closeModal)
 
-  // Submit forecast
-  submitButton.addEventListener("click", (e) => {
-    e.preventDefault()
+  // Submit forecast (demo only)
+  if (submitButton) {
+    submitButton.addEventListener("click", (e) => {
+      e.preventDefault()
 
-    const eventSelect = document.getElementById("eventSelect")
+      if (!eventSelect || !eventSelect.value) {
+        alert("Please select an event.")
+        return
+      }
 
-    // Validation
-    if (!eventSelect.value) {
-      alert("Please select an event.")
-      return
-    }
+      if (!selectedChoice) {
+        alert("Please select YES or NO.")
+        return
+      }
 
-    if (!selectedChoice) {
-      alert("Please select YES or NO.")
-      return
-    }
+      const confidence = slider ? slider.value : "50"
 
-    const confidence = slider.value
+      console.log("Forecast submitted:", {
+        event: eventSelect.value,
+        choice: selectedChoice,
+        confidence,
+      })
 
-    // Show success message (demo only)
-    console.log("[v0] Forecast submitted:", {
-      event: eventSelect.value,
-      choice: selectedChoice,
-      confidence: confidence,
+      alert("Prediction submitted! (demo only, not saved)")
+      closeModal()
     })
-
-    alert("Prediction submitted! This is a demo only.")
-    closeModal()
-  })
+  }
 }
