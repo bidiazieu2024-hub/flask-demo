@@ -89,3 +89,50 @@ document.addEventListener("DOMContentLoaded", () => {
     connectWalletBtn.addEventListener("click", connectWallet);
   }
 });
+
+
+// --------------------------
+// Create Prediction Modal
+// --------------------------
+const openModalBtn = document.getElementById('openPredictionModal');
+const closeModalBtn = document.getElementById('closePredictionModal');
+const modal = document.getElementById('predictionModal');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const eventSelect = document.getElementById('eventSelect');
+
+if (openModalBtn) {
+  openModalBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+}
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+}
+
+window.addEventListener('click', e => {
+  if (e.target === modal) modal.style.display = 'none';
+});
+
+if (yesBtn && noBtn && eventSelect) {
+  yesBtn.addEventListener('click', () => {
+    if (!eventSelect.value) {
+      alert('Please select an event first!');
+    } else {
+      alert(`Prediction submitted:\nEvent: ${eventSelect.value}\nAnswer: YES`);
+      modal.style.display = 'none';
+    }
+  });
+
+  noBtn.addEventListener('click', () => {
+    if (!eventSelect.value) {
+      alert('Please select an event first!');
+    } else {
+      alert(`Prediction submitted:\nEvent: ${eventSelect.value}\nAnswer: NO`);
+      modal.style.display = 'none';
+    }
+  });
+}
