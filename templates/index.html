@@ -1,182 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predikto - Cyberpunk Forecasting</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predikto - Cyberpunk Forecasting</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <span class="brand-icon">⚡</span>
-            <span class="brand-name">Predikto</span>
-        </div>
-        <div class="nav-links">
-            <a href="#dashboard" class="nav-link active" data-section="dashboard">
-                <span class="nav-icon">📊</span>
-                <span>Dashboard</span>
-            </a>
-            <a href="#leaderboard" class="nav-link" data-section="leaderboard">
-                <span class="nav-icon">🏆</span>
-                <span>Leaderboard</span>
-            </a>
-            <a href="#my-forecasts" class="nav-link" data-section="my-forecasts">
-                <span class="nav-icon">📈</span>
-                <span>My Forecasts</span>
-            </a>
-        </div>
-        <button class="btn btn-primary create-forecast-btn">
-            <span>+</span> New Forecast
-        </button>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="section active">
-            <div class="section-header">
-                <h1 class="section-title">Trending Forecasts</h1>
-                <p class="section-subtitle">Real-time predictions from the Predikto community</p>
-            </div>
-
-            <!-- Stats Overview -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Active Forecasts</div>
-                    <div class="stat-value">1,247</div>
-                    <div class="stat-change positive">+12.5%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Predictions</div>
-                    <div class="stat-value">45.2K</div>
-                    <div class="stat-change positive">+8.3%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Avg Accuracy</div>
-                    <div class="stat-value">67.8%</div>
-                    <div class="stat-change negative">-2.1%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Community Members</div>
-                    <div class="stat-value">23.4K</div>
-                    <div class="stat-change positive">+15.7%</div>
-                </div>
-            </div>
-
-            <!-- Forecast Cards -->
-            <div class="forecasts-grid">
-                <!-- Forecast Card 1 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category">Technology</div>
-                        <div class="forecast-time">Closes in 5d</div>
-                    </div>
-                    <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
-                    <p class="forecast-description">Artificial General Intelligence milestone prediction</p>
-                    <div class="forecast-chart-container"><canvas id="chart1"></canvas></div>
-                    <div class="forecast-stats">
-                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">34%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">66%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">8,234</div></div>
-                    </div>
-                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
-                </div>
-
-                <!-- Forecast Card 2 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category crypto">Crypto</div>
-                        <div class="forecast-time">Closes in 2d</div>
-                    </div>
-                    <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
-                    <p class="forecast-description">BTC price prediction for year-end</p>
-                    <div class="forecast-chart-container"><canvas id="chart2"></canvas></div>
-                    <div class="forecast-stats">
-                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">72%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">28%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">15,892</div></div>
-                    </div>
-                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
-                </div>
-
-                <!-- Forecast Card 3 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category politics">Politics</div>
-                        <div class="forecast-time">Closes in 12d</div>
-                    </div>
-                    <h3 class="forecast-title">Global climate agreement reached in 2025?</h3>
-                    <p class="forecast-description">Major nations commit to new emissions targets</p>
-                    <div class="forecast-chart-container"><canvas id="chart3"></canvas></div>
-                    <div class="forecast-stats">
-                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">58%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">42%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">6,543</div></div>
-                    </div>
-                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
-                </div>
-
-                <!-- Forecast Card 4 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category sports">Sports</div>
-                        <div class="forecast-time">Closes in 1d</div>
-                    </div>
-                    <h3 class="forecast-title">Team X wins championship 2025?</h3>
-                    <p class="forecast-description">Season championship winner prediction</p>
-                    <div class="forecast-chart-container"><canvas id="chart4"></canvas></div>
-                    <div class="forecast-stats">
-                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">45%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">55%</div></div>
-                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">12,108</div></div>
-                    </div>
-                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leaderboard Section -->
-        <section id="leaderboard" class="section">
-            <div class="section-header">
-                <h1 class="section-title">Leaderboard</h1>
-                <p class="section-subtitle">Top forecasters ranked by accuracy</p>
-            </div>
-            <!-- Keep your original leaderboard here -->
-        </section>
-
-        <!-- My Forecasts Section -->
-        <section id="my-forecasts" class="section">
-            <div class="section-header">
-                <h1 class="section-title">My Forecasts</h1>
-                <p class="section-subtitle">Track your predictions and performance</p>
-            </div>
-            <div class="empty-state">
-                <div class="empty-icon">📊</div>
-                <h3>No forecasts yet</h3>
-                <p>Start making predictions to build your reputation</p>
-                <button class="btn btn-primary create-forecast-btn">Create Your First Forecast</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Forecast Details Modal -->
-    <div id="forecastDetailsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Forecast Details</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p id="forecastDescription">Detailed forecast information will go here.</p>
-                <div class="chart-area"><canvas id="forecastDetailsChart"></canvas></div>
-                <button class="btn btn-primary">Join Discussion</button>
-            </div>
-        </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚡</span>
+      <span class="brand-name">Predikto</span>
     </div>
+    <div class="nav-links">
+      <a href="#dashboard" class="nav-link active" data-section="dashboard">
+        <span class="nav-icon">📊</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="#leaderboard" class="nav-link" data-section="leaderboard">
+        <span class="nav-icon">🏆</span>
+        <span>Leaderboard</span>
+      </a>
+      <a href="#my-forecasts" class="nav-link" data-section="my-forecasts">
+        <span class="nav-icon">📈</span>
+        <span>My Forecasts</span>
+      </a>
+    </div>
+    <button class="btn btn-primary create-forecast-btn"><span>+</span> New Forecast</button>
+  </nav>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section active">
+      <div class="section-header">
+        <h1 class="section-title">Trending Forecasts</h1>
+        <p class="section-subtitle">Real-time predictions from the Predikto community</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Active Forecasts</div><div class="stat-value">1,247</div><div class="stat-change positive">+12.5%</div></div>
+        <div class="stat-card"><div class="stat-label">Total Predictions</div><div class="stat-value">45.2K</div><div class="stat-change positive">+8.3%</div></div>
+        <div class="stat-card"><div class="stat-label">Avg Accuracy</div><div class="stat-value">67.8%</div><div class="stat-change negative">-2.1%</div></div>
+        <div class="stat-card"><div class="stat-label">Community Members</div><div class="stat-value">23.4K</div><div class="stat-change positive">+15.7%</div></div>
+      </div>
+
+      <div class="forecasts-grid">
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div class="forecast-category">Technology</div>
+            <div class="forecast-time">Closes in 5d</div>
+          </div>
+          <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
+          <p class="forecast-description">Artificial General Intelligence milestone prediction</p>
+          <div class="forecast-chart-container"><canvas id="chart1"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">34%</div></div>
+            <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">66%</div></div>
+            <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">8,234</div></div>
+          </div>
+          <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div class="forecast-category crypto">Crypto</div>
+            <div class="forecast-time">Closes in 2d</div>
+          </div>
+          <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
+          <p class="forecast-description">BTC price prediction for year-end</p>
+          <div class="forecast-chart-container"><canvas id="chart2"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">72%</div></div>
+            <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">28%</div></div>
+            <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">15,892</div></div>
+          </div>
+          <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="leaderboard" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Leaderboard</h1>
+        <p class="section-subtitle">Top forecasters ranked by accuracy</p>
+      </div>
+
+      <div class="leaderboard-container">
+        <div class="leaderboard-table"></div>
+      </div>
+    </section>
+
+    <!-- MY FORECASTS -->
+    <section id="my-forecasts" class="section">
+      <div class="section-header">
+        <h1 class="section-title">My Forecasts</h1>
+        <p class="section-subtitle">Track your predictions and performance</p>
+      </div>
+
+      <div class="empty-state">
+        <div class="empty-icon">📊</div>
+        <h3>No forecasts yet</h3>
+        <p>Start making predictions to build your reputation</p>
+        <button class="btn btn-primary create-forecast-btn">Create Your First Forecast</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FORECAST DETAILS MODAL -->
+  <div id="forecastDetailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Forecast Details</h2>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="forecastDescription">Detailed forecast information will go here.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
