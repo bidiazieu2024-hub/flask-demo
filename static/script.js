@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Predikto loaded");
 
-  // Navigation switching
+  // Navigation
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".section");
 
@@ -16,40 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Leaderboard data
-  window.addEventListener("load", () => {
-    const leaderboardData = [
-      { rank: 1, user: "Sir Guacamole", accuracy: 98.2, predictions: 1421, points: 35000 },
-      { rank: 2, user: "NotACatIRL", accuracy: 95.6, predictions: 1120, points: 32500 },
-      { rank: 3, user: "BreadDealer69", accuracy: 93.1, predictions: 985, points: 30100 },
-      { rank: 4, user: "QuantumPotato", accuracy: 90.8, predictions: 876, points: 28900 },
-      { rank: 5, user: "CaptainObvious", accuracy: 88.5, predictions: 811, points: 27500 },
-      { rank: 6, user: "DefinitelyHuman", accuracy: 85.4, predictions: 700, points: 26000 },
-      { rank: 7, user: "ElonMusketeer", accuracy: 83.7, predictions: 642, points: 24100 },
-      { rank: 8, user: "DarthTrader", accuracy: 81.2, predictions: 598, points: 22800 },
-      { rank: 9, user: "MemeInvestor", accuracy: 78.9, predictions: 553, points: 21250 },
-      { rank: 10, user: "CryptoBard", accuracy: 76.3, predictions: 498, points: 19900 }
-    ];
-
-    const leaderboardTable = document.querySelector(".leaderboard-table");
-    leaderboardData.forEach(entry => {
-      const row = document.createElement("div");
-      row.className = "table-row";
-      row.innerHTML = `
-        <div>${entry.rank}</div>
-        <div class="user">
-          <div class="user-avatar">${entry.user.substring(0,2).toUpperCase()}</div>
-          <span>${entry.user}</span>
-        </div>
-        <div>${entry.accuracy.toFixed(1)}%</div>
-        <div>${entry.predictions}</div>
-        <div>${entry.points.toLocaleString()}</div>
-      `;
-      leaderboardTable.appendChild(row);
-    });
-  });
-
-  // Simple sample charts
+  // Charts
   const charts = [
     { id: "chart1", yes: 34, no: 66 },
     { id: "chart2", yes: 72, no: 28 }
@@ -67,5 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
         options: { cutout: "75%", plugins: { legend: { display: false } } }
       });
     }
+  });
+
+  // Leaderboard
+  const leaderboardData = [
+    { user: "BasedWizard", accuracy: 98.2, forecasts: 1240 },
+    { user: "Sir Sandwich", accuracy: 95.7, forecasts: 1100 },
+    { user: "John NotDoe", accuracy: 93.1, forecasts: 980 },
+    { user: "Captain Foresight", accuracy: 91.4, forecasts: 870 },
+    { user: "DataLlama", accuracy: 89.5, forecasts: 802 },
+    { user: "Professor YesMan", accuracy: 88.2, forecasts: 777 },
+    { user: "CaffeinatedTurtle", accuracy: 86.9, forecasts: 721 },
+    { user: "Banana Prophet", accuracy: 84.3, forecasts: 699 },
+    { user: "WittyMcBitty", accuracy: 82.7, forecasts: 654 },
+    { user: "QuantumMuffin", accuracy: 80.1, forecasts: 623 }
+  ];
+
+  const leaderboardGrid = document.querySelector(".leaderboard-grid");
+  leaderboardData.forEach((entry, index) => {
+    const card = document.createElement("div");
+    card.className = "leaderboard-card";
+    card.innerHTML = `
+      <h3>#${index + 1} ${entry.user}</h3>
+      <p>Accuracy: <strong>${entry.accuracy.toFixed(1)}%</strong></p>
+      <p>Predictions: ${entry.forecasts}</p>
+    `;
+    leaderboardGrid.appendChild(card);
   });
 });
