@@ -23,14 +23,104 @@
     <button class="new-forecast-btn">+ New Forecast</button>
   </nav>
 
-  <!-- Main -->
+  <!-- Main Content -->
   <main class="main-content">
-    {% include 'dashboard.html' %}
-    {% include 'leaderboard.html' %}
-    {% include 'forecasts.html' %}
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section active">
+      <div class="section-header">
+        <h1 class="section-title">Trending Forecasts</h1>
+        <p class="section-subtitle">Real-time predictions from the Predikto community.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Active Forecasts</div><div class="stat-value">2,847</div><div class="stat-change positive">↑ 12.5% from last week</div></div>
+        <div class="stat-card"><div class="stat-label">Total Predictions</div><div class="stat-value">48,392</div><div class="stat-change positive">↑ 8.3% from last week</div></div>
+        <div class="stat-card"><div class="stat-label">Average Accuracy</div><div class="stat-value">73.8%</div><div class="stat-change positive">↑ 2.1% from last week</div></div>
+        <div class="stat-card"><div class="stat-label">Community Members</div><div class="stat-value">15,234</div><div class="stat-change positive">↑ 15.7% from last week</div></div>
+      </div>
+
+      <div class="forecast-grid">
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div><h3 class="forecast-title">Will AI reach AGI by 2027?</h3><span class="category-tag">Technology</span></div>
+          </div>
+          <div class="chart-container"><canvas id="chart1"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="forecast-stat-label">YES</div><div class="forecast-stat-value yes-value">32%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">NO</div><div class="forecast-stat-value no-value">68%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">Predictions</div><div class="forecast-stat-value">8,432</div></div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div><h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3><span class="category-tag">Crypto</span></div>
+          </div>
+          <div class="chart-container"><canvas id="chart2"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="forecast-stat-label">YES</div><div class="forecast-stat-value yes-value">67%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">NO</div><div class="forecast-stat-value no-value">33%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">Predictions</div><div class="forecast-stat-value">12,847</div></div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div><h3 class="forecast-title">Global climate agreement in 2025?</h3><span class="category-tag">Politics</span></div>
+          </div>
+          <div class="chart-container"><canvas id="chart3"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="forecast-stat-label">YES</div><div class="forecast-stat-value yes-value">45%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">NO</div><div class="forecast-stat-value no-value">55%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">Predictions</div><div class="forecast-stat-value">5,621</div></div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div><h3 class="forecast-title">Team X wins championship 2025?</h3><span class="category-tag">Sports</span></div>
+          </div>
+          <div class="chart-container"><canvas id="chart4"></canvas></div>
+          <div class="forecast-stats">
+            <div class="forecast-stat"><div class="forecast-stat-label">YES</div><div class="forecast-stat-value yes-value">58%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">NO</div><div class="forecast-stat-value no-value">42%</div></div>
+            <div class="forecast-stat"><div class="forecast-stat-label">Predictions</div><div class="forecast-stat-value">9,284</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Leaderboard</h1>
+        <p class="section-subtitle">Top forecasters ranked by accuracy.</p>
+      </div>
+
+      <div class="leaderboard-list">
+        <div class="leaderboard-item top-3"><div class="rank">1</div><div class="leaderboard-user"><div class="avatar">BW</div><div class="username">BasedWizard</div></div><div class="leaderboard-stats"><div class="lb-stat"><div class="lb-stat-label">Accuracy</div><div class="lb-stat-value">94.2%</div></div><div class="lb-stat"><div class="lb-stat-label">Predictions</div><div class="lb-stat-value">1,847</div></div><div class="lb-stat"><div class="lb-stat-label">Points</div><div class="lb-stat-value">28,492</div></div></div></div>
+        <div class="leaderboard-item top-3"><div class="rank">2</div><div class="leaderboard-user"><div class="avatar">QM</div><div class="username">QuantumMuffin</div></div><div class="leaderboard-stats"><div class="lb-stat"><div class="lb-stat-label">Accuracy</div><div class="lb-stat-value">91.8%</div></div><div class="lb-stat"><div class="lb-stat-label">Predictions</div><div class="lb-stat-value">2,134</div></div><div class="lb-stat"><div class="lb-stat-label">Points</div><div class="lb-stat-value">26,823</div></div></div></div>
+        <div class="leaderboard-item top-3"><div class="rank">3</div><div class="leaderboard-user"><div class="avatar">CO</div><div class="username">CaptainObvious</div></div><div class="leaderboard-stats"><div class="lb-stat"><div class="lb-stat-label">Accuracy</div><div class="lb-stat-value">89.5%</div></div><div class="lb-stat"><div class="lb-stat-label">Predictions</div><div class="lb-stat-value">1,592</div></div><div class="lb-stat"><div class="lb-stat-label">Points</div><div class="lb-stat-value">24,156</div></div></div></div>
+      </div>
+    </section>
+
+    <!-- My Forecasts -->
+    <section id="my-forecasts" class="section">
+      <div class="section-header">
+        <h1 class="section-title">My Forecasts</h1>
+        <p class="section-subtitle">Track your predictions and performance.</p>
+      </div>
+
+      <div class="empty-state">
+        <div class="empty-icon">📊</div>
+        <h2 class="empty-title">No forecasts yet</h2>
+        <p class="empty-text">Start making predictions to climb the leaderboard!</p>
+        <button class="cta-btn">Create Your First Forecast</button>
+      </div>
+    </section>
   </main>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-
