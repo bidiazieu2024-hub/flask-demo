@@ -1,19 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Predikto loaded");
 
-  // Navigation
-  const navLinks = document.querySelectorAll(".nav-link");
-  const sections = document.querySelectorAll(".section");
-  navLinks.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      navLinks.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
-      const id = link.getAttribute("data-section");
-      sections.forEach(s => s.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
+ // Navigation
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const targetSection = link.getAttribute('data-section');
+
+    // Update active nav link
+    navLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+
+    // Show only the selected section
+    sections.forEach(section => {
+      section.classList.remove('active');
+      if (section.id === targetSection) {
+        section.classList.add('active');
+        section.style.display = 'block'; // ensure visible again
+      } else {
+        section.style.display = 'none'; // hide others cleanly
+      }
     });
+
+    // Special case: re-show the "Create Your First Forecast" CTA button
+    if (targetSection === 'my-forecasts') {
+      const emptyState = document.querySelector('#my-forecasts .empty-state');
+      if (emptyState) {
+        emptyState.style.display = 'block';
+      }
+    }
+
+    // Smooth scroll to top for transitions
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+});
+
 
   // Charts
   const configs = [
