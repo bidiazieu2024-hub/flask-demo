@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForecastX - Cyberpunk Predictions</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Predikto - Cyberpunk Forecasting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="nav-brand">
             <span class="brand-icon">⚡</span>
-            <span class="brand-name">ForecastX</span>
+            <span class="brand-name">Predikto</span>
         </div>
         <div class="nav-links">
             <a href="#dashboard" class="nav-link active" data-section="dashboard">
@@ -35,11 +35,12 @@
 
     <!-- Main Content -->
     <main class="main-content">
+
         <!-- Dashboard Section -->
         <section id="dashboard" class="section active">
             <div class="section-header">
                 <h1 class="section-title">Trending Forecasts</h1>
-                <p class="section-subtitle">Real-time predictions from the community</p>
+                <p class="section-subtitle">Real-time predictions from the Predikto community</p>
             </div>
 
             <!-- Stats Overview -->
@@ -68,7 +69,7 @@
 
             <!-- Forecast Cards -->
             <div class="forecasts-grid">
-                <!-- Forecast Card 1 -->
+                <!-- Sample Forecast Card -->
                 <div class="forecast-card">
                     <div class="forecast-header">
                         <div class="forecast-category">Technology</div>
@@ -76,11 +77,9 @@
                     </div>
                     <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
                     <p class="forecast-description">Artificial General Intelligence milestone prediction</p>
-                    
                     <div class="forecast-chart-container">
                         <canvas id="chart1"></canvas>
                     </div>
-                    
                     <div class="forecast-stats">
                         <div class="forecast-stat">
                             <div class="stat-label">YES</div>
@@ -95,101 +94,7 @@
                             <div class="stat-count">8,234</div>
                         </div>
                     </div>
-                    
-                    <button class="btn btn-secondary btn-block">View Details</button>
-                </div>
-
-                <!-- Forecast Card 2 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category crypto">Crypto</div>
-                        <div class="forecast-time">Closes in 2d</div>
-                    </div>
-                    <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
-                    <p class="forecast-description">BTC price prediction for year-end</p>
-                    
-                    <div class="forecast-chart-container">
-                        <canvas id="chart2"></canvas>
-                    </div>
-                    
-                    <div class="forecast-stats">
-                        <div class="forecast-stat">
-                            <div class="stat-label">YES</div>
-                            <div class="stat-percentage yes">72%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">NO</div>
-                            <div class="stat-percentage no">28%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">Predictions</div>
-                            <div class="stat-count">15,892</div>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-secondary btn-block">View Details</button>
-                </div>
-
-                <!-- Forecast Card 3 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category politics">Politics</div>
-                        <div class="forecast-time">Closes in 12d</div>
-                    </div>
-                    <h3 class="forecast-title">Global climate agreement reached in 2025?</h3>
-                    <p class="forecast-description">Major nations commit to new emissions targets</p>
-                    
-                    <div class="forecast-chart-container">
-                        <canvas id="chart3"></canvas>
-                    </div>
-                    
-                    <div class="forecast-stats">
-                        <div class="forecast-stat">
-                            <div class="stat-label">YES</div>
-                            <div class="stat-percentage yes">58%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">NO</div>
-                            <div class="stat-percentage no">42%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">Predictions</div>
-                            <div class="stat-count">6,543</div>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-secondary btn-block">View Details</button>
-                </div>
-
-                <!-- Forecast Card 4 -->
-                <div class="forecast-card">
-                    <div class="forecast-header">
-                        <div class="forecast-category sports">Sports</div>
-                        <div class="forecast-time">Closes in 1d</div>
-                    </div>
-                    <h3 class="forecast-title">Team X wins championship 2025?</h3>
-                    <p class="forecast-description">Season championship winner prediction</p>
-                    
-                    <div class="forecast-chart-container">
-                        <canvas id="chart4"></canvas>
-                    </div>
-                    
-                    <div class="forecast-stats">
-                        <div class="forecast-stat">
-                            <div class="stat-label">YES</div>
-                            <div class="stat-percentage yes">45%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">NO</div>
-                            <div class="stat-percentage no">55%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">Predictions</div>
-                            <div class="stat-count">12,108</div>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-secondary btn-block">View Details</button>
+                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
                 </div>
             </div>
         </section>
@@ -216,12 +121,8 @@
                         <div class="table-cell">Predictions</div>
                         <div class="table-cell">Points</div>
                     </div>
-
-                    <!-- Top 3 with special styling -->
                     <div class="table-row top-rank rank-1">
-                        <div class="table-cell rank">
-                            <span class="rank-badge gold">1</span>
-                        </div>
+                        <div class="table-cell rank"><span class="rank-badge gold">1</span></div>
                         <div class="table-cell user">
                             <div class="user-avatar">CK</div>
                             <div class="user-info">
@@ -229,147 +130,9 @@
                                 <div class="user-badge">🔥 Elite</div>
                             </div>
                         </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 89%"></div>
-                                <span class="accuracy-text">89.2%</span>
-                            </div>
-                        </div>
+                        <div class="table-cell"><span class="accuracy-text">89.2%</span></div>
                         <div class="table-cell">1,234</div>
                         <div class="table-cell points">25,890</div>
-                    </div>
-
-                    <div class="table-row top-rank rank-2">
-                        <div class="table-cell rank">
-                            <span class="rank-badge silver">2</span>
-                        </div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">FP</div>
-                            <div class="user-info">
-                                <div class="user-name">FuturePredictor</div>
-                                <div class="user-badge">⚡ Pro</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 87%"></div>
-                                <span class="accuracy-text">87.5%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">987</div>
-                        <div class="table-cell points">23,456</div>
-                    </div>
-
-                    <div class="table-row top-rank rank-3">
-                        <div class="table-cell rank">
-                            <span class="rank-badge bronze">3</span>
-                        </div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">TM</div>
-                            <div class="user-info">
-                                <div class="user-name">TrendMaster</div>
-                                <div class="user-badge">⭐ Expert</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 85%"></div>
-                                <span class="accuracy-text">85.3%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">856</div>
-                        <div class="table-cell points">21,234</div>
-                    </div>
-
-                    <!-- Regular ranks -->
-                    <div class="table-row">
-                        <div class="table-cell rank">4</div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">DA</div>
-                            <div class="user-info">
-                                <div class="user-name">DataAnalyst</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 83%"></div>
-                                <span class="accuracy-text">83.1%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">734</div>
-                        <div class="table-cell points">18,902</div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="table-cell rank">5</div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">QS</div>
-                            <div class="user-info">
-                                <div class="user-name">QuantumSeer</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 82%"></div>
-                                <span class="accuracy-text">82.7%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">692</div>
-                        <div class="table-cell points">17,456</div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="table-cell rank">6</div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">NV</div>
-                            <div class="user-info">
-                                <div class="user-name">NeonVisionary</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 81%"></div>
-                                <span class="accuracy-text">81.4%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">623</div>
-                        <div class="table-cell points">16,234</div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="table-cell rank">7</div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">PP</div>
-                            <div class="user-info">
-                                <div class="user-name">ProbabilityPro</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 80%"></div>
-                                <span class="accuracy-text">80.9%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">578</div>
-                        <div class="table-cell points">15,123</div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="table-cell rank">8</div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">MW</div>
-                            <div class="user-info">
-                                <div class="user-name">MarketWizard</div>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="accuracy-bar">
-                                <div class="accuracy-fill" style="width: 79%"></div>
-                                <span class="accuracy-text">79.6%</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">545</div>
-                        <div class="table-cell points">14,567</div>
                     </div>
                 </div>
             </div>
@@ -381,30 +144,6 @@
                 <h1 class="section-title">My Forecasts</h1>
                 <p class="section-subtitle">Track your predictions and performance</p>
             </div>
-
-            <div class="my-stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Your Accuracy</div>
-                    <div class="stat-value">76.4%</div>
-                    <div class="stat-change positive">+3.2%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Predictions</div>
-                    <div class="stat-value">342</div>
-                    <div class="stat-change positive">+12</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Your Rank</div>
-                    <div class="stat-value">#42</div>
-                    <div class="stat-change positive">↑5</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Points</div>
-                    <div class="stat-value">8,234</div>
-                    <div class="stat-change positive">+234</div>
-                </div>
-            </div>
-
             <div class="empty-state">
                 <div class="empty-icon">📊</div>
                 <h3>No forecasts yet</h3>
@@ -412,75 +151,27 @@
                 <button class="btn btn-primary create-forecast-btn">Create Your First Forecast</button>
             </div>
         </section>
+
     </main>
 
-    <!-- Create Forecast Modal -->
-    <div id="createForecastModal" class="modal">
+    <!-- Forecast Details Modal -->
+    <div id="forecastDetailsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Create New Forecast</h2>
+                <h2>Forecast Details</h2>
                 <button class="close-btn">&times;</button>
             </div>
-            
-            <form id="forecastForm">
-                <div class="form-group">
-                    <label for="forecastTitle">Forecast Question</label>
-                    <input type="text" id="forecastTitle" placeholder="Will X happen by Y date?" required>
+            <div class="modal-body">
+                <p id="forecastDescription">Detailed forecast information will go here.</p>
+                <div class="chart-area">
+                    <canvas id="forecastDetailsChart"></canvas>
                 </div>
-
-                <div class="form-group">
-                    <label for="forecastDescription">Description</label>
-                    <textarea id="forecastDescription" rows="3" placeholder="Provide context and details..." required></textarea>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="forecastCategory">Category</label>
-                        <select id="forecastCategory" required>
-                            <option value="">Select category</option>
-                            <option value="technology">Technology</option>
-                            <option value="crypto">Crypto</option>
-                            <option value="politics">Politics</option>
-                            <option value="sports">Sports</option>
-                            <option value="finance">Finance</option>
-                            <option value="science">Science</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="forecastDeadline">Resolution Date</label>
-                        <input type="date" id="forecastDeadline" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="forecastPrediction">Your Prediction</label>
-                    <div class="prediction-buttons">
-                        <button type="button" class="prediction-btn" data-prediction="yes">
-                            <span class="prediction-icon">✓</span>
-                            <span>YES</span>
-                        </button>
-                        <button type="button" class="prediction-btn" data-prediction="no">
-                            <span class="prediction-icon">✗</span>
-                            <span>NO</span>
-                        </button>
-                    </div>
-                    <input type="hidden" id="forecastPrediction" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="forecastConfidence">Confidence Level: <span id="confidenceValue">50</span>%</label>
-                    <input type="range" id="forecastConfidence" min="0" max="100" value="50">
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit Forecast</button>
-                </div>
-            </form>
+                <button class="btn btn-primary">Join Discussion</button>
+            </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
