@@ -123,6 +123,85 @@
       </div>
     </section>
 
+      <!-- New Forecast Modal -->
+  <div id="newForecastModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>New Forecast</h2>
+        <button class="close-btn" id="closeNewForecast">&times;</button>
+      </div>
+
+      <form id="newForecastForm">
+        <div class="form-group">
+          <label for="forecastQuestion">Forecast question</label>
+          <input
+            type="text"
+            id="forecastQuestion"
+            placeholder="Will AI reach AGI by 2027?"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="forecastCategory">Category</label>
+          <select id="forecastCategory" required>
+            <option value="">Select a category</option>
+            <option value="technology">Technology</option>
+            <option value="crypto">Crypto</option>
+            <option value="politics">Politics</option>
+            <option value="sports">Sports</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your prediction</label>
+          <div class="prediction-buttons">
+            <button
+              type="button"
+              class="prediction-btn"
+              data-prediction="yes"
+              id="yesPredictionBtn"
+            >
+              <span class="prediction-icon">✅</span>
+              <span>YES</span>
+            </button>
+            <button
+              type="button"
+              class="prediction-btn"
+              data-prediction="no"
+              id="noPredictionBtn"
+            >
+              <span class="prediction-icon">❌</span>
+              <span>NO</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confidenceRange">
+            Confidence: <span id="confidenceValue">60</span>%
+          </label>
+          <input
+            type="range"
+            id="confidenceRange"
+            min="1"
+            max="99"
+            value="60"
+          />
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelNewForecast">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Submit Forecast
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   </main>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
