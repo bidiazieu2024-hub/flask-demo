@@ -58,3 +58,31 @@ document.addEventListener("DOMContentLoaded", () => {
     leaderboardTable.appendChild(div);
   });
 });
+
+// --------------------------
+// MetaMask Connection
+// --------------------------
+const connectWalletBtn = document.getElementById('connectWalletBtn');
+
+async function connectWallet() {
+  if (typeof window.ethereum !== 'undefined') {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const walletAddress = accounts[0];
+      alert(`Connected to MetaMask!\nWallet: ${walletAddress}`);
+      connectWalletBtn.textContent = `Connected`;
+      connectWalletBtn.disabled = true;
+      connectWalletBtn.style.opacity = '0.7';
+    } catch (error) {
+      console.error(error);
+      alert('Connection request was rejected.');
+    }
+  } else {
+    alert('MetaMask is not installed. Please install it to continue.');
+    window.open('https://metamask.io/download/', '_blank');
+  }
+}
+
+if (connectWalletBtn) {
+  connectWalletBtn.addEventListener('click', connectWallet);
+}
