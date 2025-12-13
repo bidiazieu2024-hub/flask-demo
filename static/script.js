@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Predikto loaded");
+
   // Navigation
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".section");
-
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
@@ -39,11 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Funny leaderboard
+  // Funny Leaderboard
   const leaderboard = [
-    "BasedWizard", "BananaProphet", "WittyMcBitty", "QuantumMuffin",
-    "ProfessorYesMan", "SirGuacamole", "CaptainObvious", "CaffeinatedTurtle",
-    "BreadDealer69", "DefinitelyHuman"
+    "BasedWizard", "BananaProphet", "SirGuacamole", "CaptainObvious",
+    "QuantumMuffin", "CaffeinatedTurtle", "WittyMcBitty", "DataLlama",
+    "CryptoBard", "DefinitelyHuman"
   ];
   const leaderboardTable = document.querySelector(".leaderboard-table");
   leaderboard.forEach((name, i) => {
