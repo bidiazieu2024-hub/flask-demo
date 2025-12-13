@@ -28,10 +28,11 @@
         <span>My Forecasts</span>
       </a>
     </div>
-    <button class="btn btn-primary create-forecast-btn"><span>+</span> New Forecast</button>
+    <button class="btn btn-primary create-forecast-btn">
+      <span>+</span> New Forecast
+    </button>
   </nav>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content">
 
     <!-- DASHBOARD -->
@@ -57,12 +58,6 @@
           <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
           <p class="forecast-description">Artificial General Intelligence milestone prediction</p>
           <div class="forecast-chart-container"><canvas id="chart1"></canvas></div>
-          <div class="forecast-stats">
-            <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">34%</div></div>
-            <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">66%</div></div>
-            <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">8,234</div></div>
-          </div>
-          <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
         </div>
 
         <div class="forecast-card">
@@ -73,12 +68,6 @@
           <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
           <p class="forecast-description">BTC price prediction for year-end</p>
           <div class="forecast-chart-container"><canvas id="chart2"></canvas></div>
-          <div class="forecast-stats">
-            <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">72%</div></div>
-            <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">28%</div></div>
-            <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">15,892</div></div>
-          </div>
-          <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
         </div>
       </div>
     </section>
@@ -90,8 +79,8 @@
         <p class="section-subtitle">Top forecasters ranked by accuracy</p>
       </div>
 
-      <div class="leaderboard-container">
-        <div class="leaderboard-table"></div>
+      <div class="leaderboard-grid">
+        <!-- JS will insert leaderboard cards here -->
       </div>
     </section>
 
@@ -110,19 +99,6 @@
       </div>
     </section>
   </main>
-
-  <!-- FORECAST DETAILS MODAL -->
-  <div id="forecastDetailsModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Forecast Details</h2>
-        <button class="close-btn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p id="forecastDescription">Detailed forecast information will go here.</p>
-      </div>
-    </div>
-  </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
