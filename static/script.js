@@ -220,3 +220,58 @@ function initCharts() {
 document.addEventListener("DOMContentLoaded", () => {
   initCharts()
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("forecastDetailsModal");
+  const closeBtn = modal.querySelector(".close-btn");
+
+  // Open modal when any View Details button is clicked
+  document.querySelectorAll(".view-details-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".forecast-card");
+      const title = card.querySelector(".forecast-title").textContent;
+      const desc = card.querySelector(".forecast-description").textContent;
+
+      // Fill modal with card info
+      modal.querySelector("h2").textContent = title;
+      modal.querySelector("#forecastDescription").textContent = desc;
+
+      modal.style.display = "flex";
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+});
+
+document.querySelectorAll(".filter-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // Toggle active button styling
+    document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // Example: load leaderboard data (placeholder for now)
+    const period = btn.textContent.trim();
+    console.log(`Loading leaderboard for: ${period}`);
+  });
+});
+
+const newForecastBtn = document.querySelector(".create-forecast-btn");
+const forecastModal = document.getElementById("createForecastModal");
+const cancelBtn = forecastModal.querySelector(".cancel-btn");
+
+newForecastBtn.addEventListener("click", () => {
+  forecastModal.style.display = "flex";
+});
+
+cancelBtn.addEventListener("click", () => {
+  forecastModal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === forecastModal) forecastModal.style.display = "none";
+});
+
