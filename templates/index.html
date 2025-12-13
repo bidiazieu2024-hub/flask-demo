@@ -35,7 +35,6 @@
 
     <!-- Main Content -->
     <main class="main-content">
-
         <!-- Dashboard Section -->
         <section id="dashboard" class="section active">
             <div class="section-header">
@@ -69,7 +68,7 @@
 
             <!-- Forecast Cards -->
             <div class="forecasts-grid">
-                <!-- Sample Forecast Card -->
+                <!-- Forecast Card 1 -->
                 <div class="forecast-card">
                     <div class="forecast-header">
                         <div class="forecast-category">Technology</div>
@@ -77,22 +76,62 @@
                     </div>
                     <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
                     <p class="forecast-description">Artificial General Intelligence milestone prediction</p>
-                    <div class="forecast-chart-container">
-                        <canvas id="chart1"></canvas>
-                    </div>
+                    <div class="forecast-chart-container"><canvas id="chart1"></canvas></div>
                     <div class="forecast-stats">
-                        <div class="forecast-stat">
-                            <div class="stat-label">YES</div>
-                            <div class="stat-percentage yes">34%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">NO</div>
-                            <div class="stat-percentage no">66%</div>
-                        </div>
-                        <div class="forecast-stat">
-                            <div class="stat-label">Predictions</div>
-                            <div class="stat-count">8,234</div>
-                        </div>
+                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">34%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">66%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">8,234</div></div>
+                    </div>
+                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
+                </div>
+
+                <!-- Forecast Card 2 -->
+                <div class="forecast-card">
+                    <div class="forecast-header">
+                        <div class="forecast-category crypto">Crypto</div>
+                        <div class="forecast-time">Closes in 2d</div>
+                    </div>
+                    <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
+                    <p class="forecast-description">BTC price prediction for year-end</p>
+                    <div class="forecast-chart-container"><canvas id="chart2"></canvas></div>
+                    <div class="forecast-stats">
+                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">72%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">28%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">15,892</div></div>
+                    </div>
+                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
+                </div>
+
+                <!-- Forecast Card 3 -->
+                <div class="forecast-card">
+                    <div class="forecast-header">
+                        <div class="forecast-category politics">Politics</div>
+                        <div class="forecast-time">Closes in 12d</div>
+                    </div>
+                    <h3 class="forecast-title">Global climate agreement reached in 2025?</h3>
+                    <p class="forecast-description">Major nations commit to new emissions targets</p>
+                    <div class="forecast-chart-container"><canvas id="chart3"></canvas></div>
+                    <div class="forecast-stats">
+                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">58%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">42%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">6,543</div></div>
+                    </div>
+                    <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
+                </div>
+
+                <!-- Forecast Card 4 -->
+                <div class="forecast-card">
+                    <div class="forecast-header">
+                        <div class="forecast-category sports">Sports</div>
+                        <div class="forecast-time">Closes in 1d</div>
+                    </div>
+                    <h3 class="forecast-title">Team X wins championship 2025?</h3>
+                    <p class="forecast-description">Season championship winner prediction</p>
+                    <div class="forecast-chart-container"><canvas id="chart4"></canvas></div>
+                    <div class="forecast-stats">
+                        <div class="forecast-stat"><div class="stat-label">YES</div><div class="stat-percentage yes">45%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">NO</div><div class="stat-percentage no">55%</div></div>
+                        <div class="forecast-stat"><div class="stat-label">Predictions</div><div class="stat-count">12,108</div></div>
                     </div>
                     <button class="btn btn-secondary btn-block view-details-btn">View Details</button>
                 </div>
@@ -105,37 +144,7 @@
                 <h1 class="section-title">Leaderboard</h1>
                 <p class="section-subtitle">Top forecasters ranked by accuracy</p>
             </div>
-
-            <div class="leaderboard-container">
-                <div class="leaderboard-filters">
-                    <button class="filter-btn active">All Time</button>
-                    <button class="filter-btn">This Month</button>
-                    <button class="filter-btn">This Week</button>
-                </div>
-
-                <div class="leaderboard-table">
-                    <div class="table-header">
-                        <div class="table-cell rank">Rank</div>
-                        <div class="table-cell user">User</div>
-                        <div class="table-cell">Accuracy</div>
-                        <div class="table-cell">Predictions</div>
-                        <div class="table-cell">Points</div>
-                    </div>
-                    <div class="table-row top-rank rank-1">
-                        <div class="table-cell rank"><span class="rank-badge gold">1</span></div>
-                        <div class="table-cell user">
-                            <div class="user-avatar">CK</div>
-                            <div class="user-info">
-                                <div class="user-name">CryptoKing</div>
-                                <div class="user-badge">🔥 Elite</div>
-                            </div>
-                        </div>
-                        <div class="table-cell"><span class="accuracy-text">89.2%</span></div>
-                        <div class="table-cell">1,234</div>
-                        <div class="table-cell points">25,890</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Keep your original leaderboard here -->
         </section>
 
         <!-- My Forecasts Section -->
@@ -151,7 +160,6 @@
                 <button class="btn btn-primary create-forecast-btn">Create Your First Forecast</button>
             </div>
         </section>
-
     </main>
 
     <!-- Forecast Details Modal -->
@@ -163,9 +171,7 @@
             </div>
             <div class="modal-body">
                 <p id="forecastDescription">Detailed forecast information will go here.</p>
-                <div class="chart-area">
-                    <canvas id="forecastDetailsChart"></canvas>
-                </div>
+                <div class="chart-area"><canvas id="forecastDetailsChart"></canvas></div>
                 <button class="btn btn-primary">Join Discussion</button>
             </div>
         </div>
@@ -174,4 +180,3 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-
