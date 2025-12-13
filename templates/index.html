@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Predikto - Cyberpunk Forecasting</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -14,15 +14,9 @@
       <span class="brand-name">Predikto</span>
     </div>
     <div class="nav-links">
-      <a href="#dashboard" class="nav-link active" data-section="dashboard">
-        <span class="nav-icon">📊</span> Dashboard
-      </a>
-      <a href="#leaderboard" class="nav-link" data-section="leaderboard">
-        <span class="nav-icon">🏆</span> Leaderboard
-      </a>
-      <a href="#my-forecasts" class="nav-link" data-section="my-forecasts">
-        <span class="nav-icon">📈</span> My Forecasts
-      </a>
+      <a href="#dashboard" class="nav-link active" data-section="dashboard">📊 Dashboard</a>
+      <a href="#leaderboard" class="nav-link" data-section="leaderboard">🏆 Leaderboard</a>
+      <a href="#my-forecasts" class="nav-link" data-section="my-forecasts">📈 My Forecasts</a>
     </div>
     <button class="btn btn-primary create-forecast-btn">+ New Forecast</button>
   </nav>
@@ -68,10 +62,7 @@
         <h1 class="section-title">Leaderboard</h1>
         <p class="section-subtitle">Top forecasters ranked by accuracy</p>
       </div>
-
-      <div class="leaderboard-container">
-        <div class="leaderboard-table"></div>
-      </div>
+      <div class="leaderboard-table"></div>
     </section>
 
     <!-- My Forecasts -->
@@ -88,6 +79,6 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
