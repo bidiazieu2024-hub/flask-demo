@@ -523,3 +523,27 @@
             }
         }
     </style>
+/* Connect Wallet Button */
+.section-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connect-wallet-btn {
+  background: linear-gradient(135deg, var(--cyan), var(--magenta));
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.connect-wallet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
