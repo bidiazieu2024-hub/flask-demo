@@ -19,12 +19,14 @@
   --glow-cyan: rgba(0, 255, 255, 0.5);
 }
 
+/* Apply Orbitron cyberpunk font to body */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+  font-family: "Orbitron", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
   background: var(--dark-bg);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  font-weight: 500;
 }
 
 /* Cyberpunk Background Effect */
@@ -83,11 +85,72 @@ body::before {
   }
 }
 
+/* Enhanced brand name with glitch effect */
 .brand-name {
   background: linear-gradient(135deg, var(--magenta), var(--cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.brand-name::before {
+  content: "Predikto";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  color: var(--magenta);
+  opacity: 0.7;
+  z-index: -1;
+  animation: glitch1 3s infinite;
+}
+
+.brand-name::after {
+  content: "Predikto";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: var(--cyan);
+  opacity: 0.7;
+  z-index: -1;
+  animation: glitch2 3s infinite;
+}
+
+@keyframes glitch1 {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+  }
+  92% {
+    transform: translate(-2px, 0);
+  }
+  94% {
+    transform: translate(2px, 0);
+  }
+  96% {
+    transform: translate(-1px, 0);
+  }
+}
+
+@keyframes glitch2 {
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+  }
+  91% {
+    transform: translate(2px, 0);
+  }
+  93% {
+    transform: translate(-2px, 0);
+  }
+  95% {
+    transform: translate(1px, 0);
+  }
 }
 
 .nav-links {
@@ -203,14 +266,17 @@ body::before {
   margin-bottom: 2rem;
 }
 
+/* Enhanced section title with better font weight */
 .section-title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 900;
   background: linear-gradient(135deg, var(--text-primary), var(--cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .section-subtitle {
