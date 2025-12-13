@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predikto – Cyberpunk Forecasting Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-name">Predikto</span>
+      </div>
+    </div>
+    <div class="nav-center">
+      <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
+      <a href="#" class="nav-link" data-section="leaderboard">Leaderboard</a>
+      <a href="#" class="nav-link" data-section="my-forecasts">My Forecasts</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn btn-primary create-forecast-btn">+ New Forecast</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section active">
+      <div class="section-header">
+        <h1 class="section-title">Trending Forecasts</h1>
+        <p class="section-subtitle">Real-time predictions from the Predikto community.</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Active Forecasts</div>
+          <div class="stat-value">2,847</div>
+          <div class="stat-change positive">↑ +12.5%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Predictions</div>
+          <div class="stat-value">48,392</div>
+          <div class="stat-change positive">↑ +8.3%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Average Accuracy</div>
+          <div class="stat-value">73.8%</div>
+          <div class="stat-change positive">↑ +2.1%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Community Members</div>
+          <div class="stat-value">15,234</div>
+          <div class="stat-change positive">↑ +15.7%</div>
+        </div>
+      </div>
+
+      <!-- Forecast Cards -->
+      <div class="forecasts-grid">
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div>
+              <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
+              <span class="category-tag category-tech">Technology</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart1"></canvas>
+          </div>
+          <div class="forecast-stats">
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">YES</div>
+              <div class="forecast-stat-value yes-value">32%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">NO</div>
+              <div class="forecast-stat-value no-value">68%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">Predictions</div>
+              <div class="forecast-stat-value">8,432</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div>
+              <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
+              <span class="category-tag category-crypto">Crypto</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart2"></canvas>
+          </div>
+          <div class="forecast-stats">
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">YES</div>
+              <div class="forecast-stat-value yes-value">67%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">NO</div>
+              <div class="forecast-stat-value no-value">33%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">Predictions</div>
+              <div class="forecast-stat-value">12,847</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div>
+              <h3 class="forecast-title">Global climate agreement in 2025?</h3>
+              <span class="category-tag category-politics">Politics</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart3"></canvas>
+          </div>
+          <div class="forecast-stats">
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">YES</div>
+              <div class="forecast-stat-value yes-value">45%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">NO</div>
+              <div class="forecast-stat-value no-value">55%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">Predictions</div>
+              <div class="forecast-stat-value">5,621</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-header">
+            <div>
+              <h3 class="forecast-title">Team X wins championship 2025?</h3>
+              <span class="category-tag category-sports">Sports</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="chart4"></canvas>
+          </div>
+          <div class="forecast-stats">
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">YES</div>
+              <div class="forecast-stat-value yes-value">58%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">NO</div>
+              <div class="forecast-stat-value no-value">42%</div>
+            </div>
+            <div class="forecast-stat">
+              <div class="forecast-stat-label">Predictions</div>
+              <div class="forecast-stat-value">9,284</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Leaderboard</h1>
+        <p class="section-subtitle">Top forecasters ranked by accuracy.</p>
+      </div>
+
+      <div class="leaderboard-container">
+        <div class="leaderboard-item rank-1">
+          <div class="leaderboard-rank">
+            <span class="rank-number">1</span>
+            <span class="rank-badge gold">🥇</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">BW</div>
+            <div class="user-name">BasedWizard</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">94.2%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,847</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">9,847</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item rank-2">
+          <div class="leaderboard-rank">
+            <span class="rank-number">2</span>
+            <span class="rank-badge silver">🥈</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">QM</div>
+            <div class="user-name">QuantumMuffin</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">92.8%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">2,143</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">9,234</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item rank-3">
+          <div class="leaderboard-rank">
+            <span class="rank-number">3</span>
+            <span class="rank-badge bronze">🥉</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">CO</div>
+            <div class="user-name">CaptainObvious</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">91.5%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,632</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">8,921</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">4</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">CG</div>
+            <div class="user-name">CryptoGremlin</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">89.3%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,429</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">7,845</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">5</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">FG</div>
+            <div class="user-name">ForecastGoblin</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">88.7%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,523</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">7,632</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">6</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">BS</div>
+            <div class="user-name">Banana_Stroker</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">87.9%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,284</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">7,124</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">7</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">JM</div>
+            <div class="user-name">Jack_Mayhoff</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">86.4%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,192</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">6,847</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">8</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">LN</div>
+            <div class="user-name">LigmaNutella</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">85.8%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">1,047</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">6,532</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">9</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">WM</div>
+            <div class="user-name">White.Monster</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">84.6%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">923</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">6,234</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">10</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">WW</div>
+            <div class="user-name">WhaleWatcher</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">83.9%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">876</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">5,987</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">11</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">AS</div>
+            <div class="user-name">AlphaSeagull</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">82.7%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">834</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">5,643</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">12</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">PP</div>
+            <div class="user-name">PixelProphet</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">81.5%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">792</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">5,342</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">13</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">SS</div>
+            <div class="user-name">StonkSensei</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">80.8%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">758</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">5,124</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">14</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">MO</div>
+            <div class="user-name">MemeOracle</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">79.4%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">714</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">4,876</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-item">
+          <div class="leaderboard-rank">
+            <span class="rank-number">15</span>
+          </div>
+          <div class="leaderboard-user">
+            <div class="user-avatar">TL</div>
+            <div class="user-name">TeaLeafEnjoyer</div>
+          </div>
+          <div class="leaderboard-stats">
+            <div class="stat-item">
+              <div class="stat-item-label">Accuracy</div>
+              <div class="stat-item-value">78.9%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Predictions</div>
+              <div class="stat-item-value">687</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item-label">Points</div>
+              <div class="stat-item-value">4,632</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Forecasts Section -->
+    <section id="my-forecasts" class="section">
+      <div class="section-header">
+        <h1 class="section-title">My Forecasts</h1>
+        <p class="section-subtitle">Track your predictions and performance.</p>
+      </div>
+
+      <div class="empty-state">
+        <div class="empty-icon">📊</div>
+        <h2 class="empty-title">No forecasts yet</h2>
+        <p class="empty-text">Start making predictions to build your reputation.</p>
+        <button class="btn btn-primary cta-btn">Create Your First Forecast</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- New Forecast Modal -->
+  <div id="newForecastModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Create Prediction</h2>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="forecastForm">
+          <div class="form-group">
+            <label for="eventSelect" class="form-label">Select Event</label>
+            <select id="eventSelect" class="form-select">
+              <option value="">Choose a forecast...</option>
+              <option value="agi">Will AI reach AGI by 2027?</option>
+              <option value="bitcoin">Bitcoin above $100K by end of 2025?</option>
+              <option value="climate">Global climate agreement in 2025?</option>
+              <option value="sports">Team X wins championship 2025?</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Your Prediction</label>
+            <div class="toggle-buttons">
+              <button type="button" class="toggle-btn" data-choice="yes">YES ✅</button>
+              <button type="button" class="toggle-btn" data-choice="no">NO ❌</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confidenceSlider" class="form-label">
+              Confidence: <span id="confidenceValue">50</span>%
+            </label>
+            <input type="range" id="confidenceSlider" class="form-slider" min="1" max="99" value="50">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary cancel-btn">Cancel</button>
+        <button class="btn btn-primary submit-forecast-btn">Submit Forecast</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
