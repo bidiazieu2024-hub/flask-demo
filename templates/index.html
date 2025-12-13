@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Predikto – Cyberpunk Forecasting Platform</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- App CSS (Flask static) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <!-- Navbar -->
@@ -18,11 +24,13 @@
         <span class="brand-name">Predikto</span>
       </div>
     </div>
+
     <div class="nav-center">
       <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
       <a href="#" class="nav-link" data-section="leaderboard">Leaderboard</a>
       <a href="#" class="nav-link" data-section="my-forecasts">My Forecasts</a>
     </div>
+
     <div class="nav-right">
       <button class="btn btn-primary create-forecast-btn">+ New Forecast</button>
     </div>
@@ -252,6 +260,7 @@
           </div>
         </div>
 
+        <!-- More ranks -->
         <div class="leaderboard-item">
           <div class="leaderboard-rank">
             <span class="rank-number">4</span>
@@ -300,6 +309,7 @@
           </div>
         </div>
 
+        <!-- You can edit names/stats freely below -->
         <div class="leaderboard-item">
           <div class="leaderboard-rank">
             <span class="rank-number">6</span>
@@ -324,221 +334,7 @@
           </div>
         </div>
 
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">7</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">JM</div>
-            <div class="user-name">Jack_Mayhoff</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">86.4%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">1,192</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">6,847</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">8</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">LN</div>
-            <div class="user-name">LigmaNutella</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">85.8%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">1,047</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">6,532</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">9</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">WM</div>
-            <div class="user-name">White.Monster</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">84.6%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">923</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">6,234</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">10</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">WW</div>
-            <div class="user-name">WhaleWatcher</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">83.9%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">876</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">5,987</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">11</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">AS</div>
-            <div class="user-name">AlphaSeagull</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">82.7%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">834</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">5,643</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">12</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">PP</div>
-            <div class="user-name">PixelProphet</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">81.5%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">792</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">5,342</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">13</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">SS</div>
-            <div class="user-name">StonkSensei</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">80.8%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">758</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">5,124</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">14</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">MO</div>
-            <div class="user-name">MemeOracle</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">79.4%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">714</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">4,876</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaderboard-item">
-          <div class="leaderboard-rank">
-            <span class="rank-number">15</span>
-          </div>
-          <div class="leaderboard-user">
-            <div class="user-avatar">TL</div>
-            <div class="user-name">TeaLeafEnjoyer</div>
-          </div>
-          <div class="leaderboard-stats">
-            <div class="stat-item">
-              <div class="stat-item-label">Accuracy</div>
-              <div class="stat-item-value">78.9%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Predictions</div>
-              <div class="stat-item-value">687</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-item-label">Points</div>
-              <div class="stat-item-value">4,632</div>
-            </div>
-          </div>
-        </div>
+        <!-- Add more leaderboard-item blocks as you like -->
       </div>
     </section>
 
@@ -602,7 +398,8 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
