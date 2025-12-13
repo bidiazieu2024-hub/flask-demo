@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>⚡ Predikto - Cyberpunk Forecasting Platform</title>
+  <title>⚡ Predikto – Cyberpunk Forecasting Platform</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <div class="brand">⚡ Predikto</div>
@@ -23,54 +30,51 @@
     <button class="new-forecast-btn">+ New Forecast</button>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main class="main-content">
 
-    <!-- Dashboard Section -->
+    <!-- Dashboard -->
     <section id="dashboard" class="section active">
       <div class="section-header">
-        <div class="section-header-top">
-          <h1 class="section-title">Trending Forecasts</h1>
-          <button id="connectWalletBtn" class="connect-wallet-btn">Connect to MetaMask</button>
-        </div>
+        <h1 class="section-title">Trending Forecasts</h1>
         <p class="section-subtitle">Real-time predictions from the Predikto community.</p>
       </div>
 
+      <!-- Stats -->
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">Active Forecasts</div><div class="stat-value">2,847</div><div class="stat-change positive">↑ 12.5% from last week</div></div>
-        <div class="stat-card"><div class="stat-label">Total Predictions</div><div class="stat-value">48,392</div><div class="stat-change positive">↑ 8.3% from last week</div></div>
-        <div class="stat-card"><div class="stat-label">Average Accuracy</div><div class="stat-value">73.8%</div><div class="stat-change positive">↑ 2.1% from last week</div></div>
-        <div class="stat-card"><div class="stat-label">Community Members</div><div class="stat-value">15,234</div><div class="stat-change positive">↑ 15.7% from last week</div></div>
+        <div class="stat-card"><div class="stat-label">Active Forecasts</div><div class="stat-value">2,847</div><div class="stat-change positive">↑ 12.5%</div></div>
+        <div class="stat-card"><div class="stat-label">Total Predictions</div><div class="stat-value">48,392</div><div class="stat-change positive">↑ 8.3%</div></div>
+        <div class="stat-card"><div class="stat-label">Average Accuracy</div><div class="stat-value">73.8%</div><div class="stat-change positive">↑ 2.1%</div></div>
+        <div class="stat-card"><div class="stat-label">Community Members</div><div class="stat-value">15,234</div><div class="stat-change positive">↑ 15.7%</div></div>
       </div>
 
+      <!-- Forecast Cards -->
       <div class="forecast-grid">
+
         <div class="forecast-card">
-          <div class="forecast-header">
-            <div><h3 class="forecast-title">Will AI reach AGI by 2027?</h3><span class="category-tag">Technology</span></div>
-          </div>
+          <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
+          <span class="category-tag">Technology</span>
           <div class="chart-container"><canvas id="chart1"></canvas></div>
         </div>
 
         <div class="forecast-card">
-          <div class="forecast-header">
-            <div><h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3><span class="category-tag">Crypto</span></div>
-          </div>
+          <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
+          <span class="category-tag">Crypto</span>
           <div class="chart-container"><canvas id="chart2"></canvas></div>
         </div>
 
         <div class="forecast-card">
-          <div class="forecast-header">
-            <div><h3 class="forecast-title">Global climate agreement in 2025?</h3><span class="category-tag">Politics</span></div>
-          </div>
+          <h3 class="forecast-title">Global climate agreement in 2025?</h3>
+          <span class="category-tag">Politics</span>
           <div class="chart-container"><canvas id="chart3"></canvas></div>
         </div>
 
         <div class="forecast-card">
-          <div class="forecast-header">
-            <div><h3 class="forecast-title">Team X wins championship 2025?</h3><span class="category-tag">Sports</span></div>
-          </div>
+          <h3 class="forecast-title">Team X wins championship 2025?</h3>
+          <span class="category-tag">Sports</span>
           <div class="chart-container"><canvas id="chart4"></canvas></div>
         </div>
+
       </div>
     </section>
 
@@ -82,7 +86,26 @@
       </div>
 
       <div class="leaderboard-list">
-        <!-- leaderboard items here (already working fine) -->
+
+        <!-- Example top ranks -->
+        <div class="leaderboard-item top-3">
+          <div class="rank">1</div>
+          <div class="leaderboard-user"><div class="avatar">BW</div><div class="username">BasedWizard</div></div>
+          <div class="leaderboard-stats"><div class="lb-stat">Accuracy: 94.2%</div><div class="lb-stat">Predictions: 1,847</div><div class="lb-stat">Points: 28,492</div></div>
+        </div>
+
+        <div class="leaderboard-item top-3">
+          <div class="rank">2</div>
+          <div class="leaderboard-user"><div class="avatar">QM</div><div class="username">QuantumMuffin</div></div>
+          <div class="leaderboard-stats"><div class="lb-stat">Accuracy: 91.8%</div><div class="lb-stat">Predictions: 2,134</div><div class="lb-stat">Points: 26,823</div></div>
+        </div>
+
+        <div class="leaderboard-item top-3">
+          <div class="rank">3</div>
+          <div class="leaderboard-user"><div class="avatar">CO</div><div class="username">CaptainObvious</div></div>
+          <div class="leaderboard-stats"><div class="lb-stat">Accuracy: 89.5%</div><div class="lb-stat">Predictions: 1,592</div><div class="lb-stat">Points: 24,156</div></div>
+        </div>
+
       </div>
     </section>
 
@@ -95,35 +118,11 @@
 
       <div class="empty-state">
         <div class="empty-icon">📊</div>
-        <h2 class="empty-title">You haven’t made any predictions yet</h2>
-        <p class="empty-text">Start building your forecasting reputation!</p>
-        <button id="openPredictionModal" class="cta-btn">Create Your First Prediction</button>
+        <h2 class="empty-title">No forecasts yet</h2>
+        <p class="empty-text">Start making predictions to climb the leaderboard!</p>
       </div>
     </section>
 
-    <!-- Prediction Modal -->
-    <div id="predictionModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Create Prediction</h2>
-          <button id="closePredictionModal" class="close-btn">&times;</button>
-        </div>
-        <div class="modal-body">
-          <label for="eventSelect">Choose an active event:</label>
-          <select id="eventSelect">
-            <option value="">-- Select an event --</option>
-            <option>Will AI reach AGI by 2027?</option>
-            <option>Bitcoin above $100K by end of 2025?</option>
-            <option>Global climate agreement in 2025?</option>
-            <option>Team X wins championship 2025?</option>
-          </select>
-          <div class="prediction-buttons">
-            <button class="prediction-btn" id="yesBtn">Yes 👍</button>
-            <button class="prediction-btn" id="noBtn">No 👎</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
