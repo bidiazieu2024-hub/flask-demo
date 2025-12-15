@@ -1,6 +1,6 @@
 // Simple in-memory + localStorage state for demo market + users
 const LOCAL_STORAGE_KEY = "predikto_demo_state_v1";
-const INITIAL_FAKE_BALANCE = 1000;
+const INITIAL_FAKE_BALANCE = 100; // <- reset / initial amount
 
 // Market configuration for the 4 hard-coded cards
 const MARKET_CONFIG = [
@@ -579,7 +579,7 @@ function getBetStatusText(bet, market) {
   return '<span class="status-pill status-lose">Lost</span>';
 }
 
-// ---------- MetaMask connect + first-time credit ----------
+// ---------- MetaMask connect + first-time + reset credit ----------
 
 function setupMetamask() {
   const btn = document.getElementById("connectMetamaskBtn");
@@ -606,20 +606,31 @@ function setupMetamask() {
       console.log("Connected MetaMask account:", account);
 
       const global = loadGlobalState();
-      if (!global.users[account]) {
-        // First-time login: credit demo tokens (platform balance only)
-        global.users[account] = {
+      let user = global.users[account];
+
+      if (!user) {
+        // First-time login: create user and credit demo balance
+        user = {
           address: account,
           balance: INITIAL_FAKE_BALANCE,
           bets: [],
         };
+        global.users[account] = user;
         saveGlobalState(global);
         alert(
           `Welcome to Predikto! We have credited your demo account with ${INITIAL_FAKE_BALANCE} fake ETH (platform-only).`
         );
+      } else {
+        // Already known user: RESET balance back to INITIAL_FAKE_BALANCE
+        user.balance = INITIAL_FAKE_BALANCE;
+        global.users[account] = user;
+        saveGlobalState(global);
+        alert(
+          `Demo balance reset to ${INITIAL_FAKE_BALANCE} fake ETH for this account.`
+        );
       }
 
-      appState.user = global.users[account];
+      appState.user = user;
       window.localStorage.setItem("predikto_last_address", account);
 
       btn.textContent = "Connected";
