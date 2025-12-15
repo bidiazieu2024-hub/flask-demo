@@ -32,7 +32,9 @@
     </div>
 
     <div class="nav-right">
-      <!-- NEW: MetaMask button -->
+      <div id="demoBalance" class="demo-balance">
+        Balance: <span id="demoBalanceAmount">—</span> demo ETH
+      </div>
       <button id="connectMetamaskBtn" class="btn btn-secondary">Connect MetaMask</button>
       <button class="btn btn-primary create-forecast-btn">+ New Forecast</button>
     </div>
@@ -73,7 +75,7 @@
 
       <!-- Forecast Cards -->
       <div class="forecasts-grid">
-        <div class="forecast-card">
+        <div class="forecast-card" data-market-id="agi">
           <div class="forecast-header">
             <div>
               <h3 class="forecast-title">Will AI reach AGI by 2027?</h3>
@@ -86,11 +88,11 @@
           <div class="forecast-stats">
             <div class="forecast-stat">
               <div class="forecast-stat-label">YES</div>
-              <div class="forecast-stat-value yes-value">32%</div>
+              <div class="forecast-stat-value yes-value" data-market-id="agi" data-side="yes">32%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">NO</div>
-              <div class="forecast-stat-value no-value">68%</div>
+              <div class="forecast-stat-value no-value" data-market-id="agi" data-side="no">68%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">Predictions</div>
@@ -99,7 +101,7 @@
           </div>
         </div>
 
-        <div class="forecast-card">
+        <div class="forecast-card" data-market-id="bitcoin">
           <div class="forecast-header">
             <div>
               <h3 class="forecast-title">Bitcoin above $100K by end of 2025?</h3>
@@ -112,11 +114,11 @@
           <div class="forecast-stats">
             <div class="forecast-stat">
               <div class="forecast-stat-label">YES</div>
-              <div class="forecast-stat-value yes-value">67%</div>
+              <div class="forecast-stat-value yes-value" data-market-id="bitcoin" data-side="yes">67%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">NO</div>
-              <div class="forecast-stat-value no-value">33%</div>
+              <div class="forecast-stat-value no-value" data-market-id="bitcoin" data-side="no">33%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">Predictions</div>
@@ -125,7 +127,7 @@
           </div>
         </div>
 
-        <div class="forecast-card">
+        <div class="forecast-card" data-market-id="climate">
           <div class="forecast-header">
             <div>
               <h3 class="forecast-title">Global climate agreement in 2025?</h3>
@@ -138,11 +140,11 @@
           <div class="forecast-stats">
             <div class="forecast-stat">
               <div class="forecast-stat-label">YES</div>
-              <div class="forecast-stat-value yes-value">45%</div>
+              <div class="forecast-stat-value yes-value" data-market-id="climate" data-side="yes">45%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">NO</div>
-              <div class="forecast-stat-value no-value">55%</div>
+              <div class="forecast-stat-value no-value" data-market-id="climate" data-side="no">55%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">Predictions</div>
@@ -151,7 +153,7 @@
           </div>
         </div>
 
-        <div class="forecast-card">
+        <div class="forecast-card" data-market-id="sports">
           <div class="forecast-header">
             <div>
               <h3 class="forecast-title">Team X wins championship 2025?</h3>
@@ -164,11 +166,11 @@
           <div class="forecast-stats">
             <div class="forecast-stat">
               <div class="forecast-stat-label">YES</div>
-              <div class="forecast-stat-value yes-value">58%</div>
+              <div class="forecast-stat-value yes-value" data-market-id="sports" data-side="yes">58%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">NO</div>
-              <div class="forecast-stat-value no-value">42%</div>
+              <div class="forecast-stat-value no-value" data-market-id="sports" data-side="no">42%</div>
             </div>
             <div class="forecast-stat">
               <div class="forecast-stat-label">Predictions</div>
@@ -501,7 +503,7 @@
             </div>
           </div>
         </div>
-        
+      </div>
     </section>
 
     <!-- My Forecasts Section -->
@@ -511,11 +513,31 @@
         <p class="section-subtitle">Track your predictions and performance.</p>
       </div>
 
-      <div class="empty-state">
+      <div id="myForecastsEmptyState" class="empty-state">
         <div class="empty-icon">📊</div>
         <h2 class="empty-title">No forecasts yet</h2>
         <p class="empty-text">Start making predictions to build your reputation.</p>
         <button class="btn btn-primary cta-btn">Create Your First Forecast</button>
+      </div>
+
+      <div id="myForecastsList" class="my-forecasts-list"></div>
+
+      <div class="admin-box">
+        <h3 class="admin-title">Instructor Controls (Demo)</h3>
+        <p class="admin-text">
+          Resolve a market outcome to trigger payout distribution based on the crowd-sourced prices.
+        </p>
+        <div class="admin-controls">
+          <select id="adminMarketSelect" class="form-select">
+            <option value="">Select market...</option>
+            <option value="agi">Will AI reach AGI by 2027?</option>
+            <option value="bitcoin">Bitcoin above $100K by end of 2025?</option>
+            <option value="climate">Global climate agreement in 2025?</option>
+            <option value="sports">Team X wins championship 2025?</option>
+          </select>
+          <button class="btn btn-secondary admin-resolve-btn" data-outcome="yes">Resolve YES</button>
+          <button class="btn btn-secondary admin-resolve-btn" data-outcome="no">Resolve NO</button>
+        </div>
       </div>
     </section>
   </main>
@@ -547,6 +569,21 @@
               <button type="button" class="toggle-btn" data-choice="yes">YES ✅</button>
               <button type="button" class="toggle-btn" data-choice="no">NO ❌</button>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="stakeInput" class="form-label">Stake (demo ETH)</label>
+            <input
+              type="number"
+              id="stakeInput"
+              class="form-input"
+              min="1"
+              step="1"
+              value="10"
+            >
+            <p class="form-help">
+              Uses only your in-app demo balance &mdash; never your real wallet funds.
+            </p>
           </div>
 
           <div class="form-group">
