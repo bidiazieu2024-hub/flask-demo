@@ -676,13 +676,13 @@ function setupMetamask() {
           `Welcome to Predikto! We have credited your demo account with ${INITIAL_FAKE_BALANCE} fake ETH (platform-only).`
         );
       } else {
-        // Already known user: RESET balance back to INITIAL_FAKE_BALANCE
-        // (If you also want to clear old forecasts, add: user.bets = []; here.)
+        // Already known user: reset balance AND clear previous forecasts
         user.balance = INITIAL_FAKE_BALANCE;
+        user.bets = []; // <-- clear all previously saved forecasts
         global.users[account] = user;
         saveGlobalState(global);
         alert(
-          `Demo balance reset to ${INITIAL_FAKE_BALANCE} fake ETH for this account.`
+          `Demo balance reset to ${INITIAL_FAKE_BALANCE} fake ETH and your demo forecasts have been cleared.`
         );
       }
 
