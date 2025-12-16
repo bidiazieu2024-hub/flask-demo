@@ -45,6 +45,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".section");
 
+  // Restore last active section (if any)
+  const storedSectionId = window.localStorage.getItem(
+    "predikto_active_section"
+  );
+  if (storedSectionId) {
+    navLinks.forEach((l) => l.classList.remove("active"));
+    sections.forEach((s) => s.classList.remove("active"));
+
+    const targetLink = Array.from(navLinks).find(
+      (l) => l.getAttribute("data-section") === storedSectionId
+    );
+    const targetSection = document.getElementById(storedSectionId);
+
+    if (targetLink && targetSection) {
+      targetLink.classList.add("active");
+      targetSection.classList.add("active");
+    }
+  }
+
   // Navigation click handler
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -60,8 +79,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetSection) {
         targetSection.classList.add("active");
       }
+
+      // Persist active section so refresh returns here
+      window.localStorage.setItem("predikto_active_section", sectionId);
     });
   });
+
+  // Optional: hook up a "Reset demo" button if it exists
+  const resetBtn = document.getElementById("resetDemoBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      resetDemoState();
+      window.location.reload();
+    });
+  }
 
   // Initialize markets + charts, modal, MetaMask, and admin controls
   initializeCharts();
@@ -69,14 +100,24 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMetamask();
   setupAdminResolutionControls();
 
-  // If there is a previously connected user, hydrate UI
-  const lastAddress = window.localStorage.getItem("predikto_last_address");
-  if (lastAddress) {
-    const state = loadGlobalState();
-    if (state.users && state.users[lastAddress]) {
-      appState.user = state.users[lastAddress];
-      updateBalanceUI();
-      renderMyForecasts(appState.user);
+  // Session handling:
+  // - First open in this tab: do NOT auto-hydrate any user (no forecasts on launch).
+  // - Refresh in the same tab: auto-hydrate last user and restore forecasts.
+  const hasSession = window.sessionStorage.getItem("predikto_session_active");
+  if (!hasSession) {
+    // First time this tab has loaded the app
+    window.sessionStorage.setItem("predikto_session_active", "1");
+    // Do not auto-load any user here: appState.user stays null, My Forecasts is empty.
+  } else {
+    // Existing session in this tab (e.g. refresh): hydrate last user if any
+    const lastAddress = window.localStorage.getItem("predikto_last_address");
+    if (lastAddress) {
+      const state = loadGlobalState();
+      if (state.users && state.users[lastAddress]) {
+        appState.user = state.users[lastAddress];
+        updateBalanceUI();
+        renderMyForecasts(appState.user);
+      }
     }
   }
 });
@@ -115,6 +156,20 @@ function saveUserData(user) {
   }
   state.users[user.address] = user;
   saveGlobalState(state);
+}
+
+// Manual reset helper (only used if you wire a button)
+function resetDemoState() {
+  try {
+    window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+    window.localStorage.removeItem("predikto_last_address");
+    window.localStorage.removeItem("predikto_active_section");
+    window.sessionStorage.removeItem("predikto_session_active");
+    appState.user = null;
+    appState.markets = {};
+  } catch (err) {
+    console.error("Failed to reset demo state", err);
+  }
 }
 
 // ---------- Market initialization (Group 4: crowdsourced MM) ----------
@@ -622,6 +677,7 @@ function setupMetamask() {
         );
       } else {
         // Already known user: RESET balance back to INITIAL_FAKE_BALANCE
+        // (If you also want to clear old forecasts, add: user.bets = []; here.)
         user.balance = INITIAL_FAKE_BALANCE;
         global.users[account] = user;
         saveGlobalState(global);
